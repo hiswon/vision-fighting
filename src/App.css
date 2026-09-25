@@ -1,184 +1,283 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
+/* 전체 고대 문서/양피지풍 스타일 설정 */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Nanum+Myeongjo:wght@400;700&display=swap');
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1a1412;
+  color: #3b2f2f;
+  font-family: 'Nanum Myeongjo', serif;
 }
 
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
+.antique-container {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
+  min-height: 100vh;
+  background: radial-gradient(circle, #f4ecd8 0%, #e6d5bc 100%);
+  border: 12px solid #2b1d12;
+  box-sizing: border-box;
+  padding: 20px;
 }
 
-#next-steps {
+/* 헤더 디자인 */
+.antique-header {
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #8b5a2b;
+  padding-bottom: 15px;
+}
+
+.ornament-top, .ornament-bottom {
+  color: #8b5a2b;
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+}
+
+.antique-header h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 2.4rem;
+  color: #2b1d12;
+  margin: 10px 0 5px 0;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #5c4033;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+/* 네비게이션 필터 버튼 */
+.antique-nav {
   display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
 
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
+.antique-btn {
+  background-color: #d2b48c;
+  border: 2px solid #6b4423;
+  color: #2b1d12;
+  padding: 8px 18px;
+  font-family: 'Nanum Myeongjo', serif;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  transition: all 0.2s ease;
+}
 
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
+.antique-btn:hover, .antique-btn.active {
+  background-color: #8b5a2b;
+  color: #f4ecd8;
+  border-color: #3b2f2f;
+}
 
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
+/* 메인 레이아웃 (지도 + 스크롤 패널) */
+.antique-main-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  flex: 1;
+}
+
+@media (max-width: 900px) {
+  .antique-main-layout {
+    grid-template-columns: 1fr;
   }
 }
 
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
+/* 고대 지도 프레임 */
+.map-frame {
   position: relative;
+  border: 4px solid #5c4033;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.3), 4px 4px 10px rgba(0,0,0,0.2);
+  min-height: 500px;
+  background-color: #dfd3c3;
+}
+
+.leaflet-map {
   width: 100%;
+  height: 100%;
+  z-index: 1;
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
+/* 모서리 장식 효과 */
+.map-corner {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-color: #8b5a2b;
+  border-style: solid;
+  z-index: 10;
+}
+.map-corner.top-left { top: 6px; left: 6px; border-width: 3px 0 0 3px; }
+.map-corner.top-right { top: 6px; right: 6px; border-width: 3px 3px 0 0; }
+.map-corner.bottom-left { bottom: 6px; left: 6px; border-width: 0 0 3px 3px; }
+.map-corner.bottom-right { bottom: 6px; right: 6px; border-width: 0 3px 3px 0; }
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
+/* 우측 두루마리 정보 패널 */
+.scroll-panel {
+  background: #fdfbf7;
+  border: 3px solid #8b5a2b;
+  border-radius: 6px;
+  padding: 20px;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.scroll-header h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  color: #4a2e18;
+  margin-top: 0;
+  border-bottom: 1px dashed #b5a48b;
+  padding-bottom: 8px;
+}
+
+.scroll-header p, .scroll-placeholder p {
+  font-size: 0.9rem;
+  color: #6b5b4e;
+  line-height: 1.5;
+}
+
+.scroll-placeholder {
+  text-align: center;
+  padding: 40px 20px;
+  color: #8c7b6e;
+  font-style: italic;
+}
+
+/* 상세 내용 박스 */
+.scroll-detail {
+  background: #f4ebd0;
+  border: 1px solid #c2b29b;
+  padding: 15px;
+  border-radius: 4px;
+  position: relative;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.scroll-detail h3 {
+  color: #3a220e;
+  margin: 8px 0;
+  font-size: 1.15rem;
+}
+
+.detail-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #4a3b32;
+}
+
+.verse-box {
+  background: #eae0c5;
+  border-left: 4px solid #8b5a2b;
+  padding: 10px;
+  margin-top: 15px;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #2b1d12;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border-radius: 3px;
+  color: white;
+}
+.badge.mission { background-color: #2e5a44; }
+.badge.disaster { background-color: #8b0000; }
+
+.close-detail-btn {
+  margin-top: 15px;
+  background: none;
+  border: 1px solid #8b5a2b;
+  color: #8b5a2b;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  border-radius: 3px;
+  float: right;
+}
+.close-detail-btn:hover {
+  background: #8b5a2b;
+  color: white;
+}
+
+/* 경각심 안내 박스 */
+.warning-box {
+  background: #faebd7;
+  border: 1px solid #d2b48c;
+  padding: 12px;
+  border-radius: 4px;
+  margin-top: 15px;
+}
+
+.warning-box h4 {
+  margin: 0 0 5px 0;
+  color: #8b0000;
+  font-size: 0.95rem;
+}
+
+.warning-box p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #5c4033;
+}
+
+/* 푸터 디자인 */
+.antique-footer {
+  text-align: center;
+  margin-top: 25px;
+  border-top: 1px solid #8b5a2b;
+  padding-top: 12px;
+  font-size: 0.9rem;
+  color: #5c4033;
+  font-style: italic;
+}
+
+/* Leaflet 팝업 고대풍 커스텀 */
+.leaflet-popup-content-wrapper {
+  background: #f4ecd8 !important;
+  border: 2px solid #8b5a2b !important;
+  border-radius: 6px !important;
+  color: #2b1d12 !important;
+  font-family: 'Nanum Myeongjo', serif !important;
+}
+
+.leaflet-popup-tip {
+  background: #f4ecd8 !important;
+  border: 2px solid #8b5a2b !important;
+}
+
+.popup-badge {
+  background-color: #8b5a2b;
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+.popup-verse {
+  margin: 8px 0 0 0;
+  font-size: 0.85rem;
+  font-style: italic;
+  border-left: 2px solid #8b5a2b;
+  padding-left: 6px;
+  color: #5c4033;
 }
